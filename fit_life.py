@@ -2,44 +2,45 @@
 
 WATER_PER_KG = 30   # стандартная величина воды в мл на 1 кг
 WATER_LITR = 1000   # содержание милилитров в 1 литре по сиситеме СИ
+LINE_ELEMENT = 38   # колличество элементов на печать для разделения
 
-
-print("Добро пожаловать в 'FitLife MVP\'")   # приветствие пользователя
-print("*" * 38)
+print("Добро пожаловать в 'FitLife MVP\'")
+print("*" * LINE_ELEMENT)
 
 user_name = input("Пожалуста напишите ваше имя: ")  # ввод данных- Имени
 user_name = user_name.title()
 
-try:
-    user_age = int(input('Укажите ваш возраст(полных лет): '))
-except ValueError:
-    print("Пожалуйста пишите цифры.")
-    user_age = int(input('Укажите ваш возраст(полных лет): '))
+while True:
+    user_age = (input('Укажите ваш возраст(полных лет): '))
+    try:
+        age = int(user_age)
+        break
+    except ValueError:
+        print("Пожалуйста пишите цифры.")
 
-try:
-    user_gravity = float(input('Запишите ваш вес в'
-                               'килограммах(указать через точку): '))
-except ValueError:
-    print("Пожалуйста пишите цифры.")
-    user_gravity = float(input('Запишите ваш вес в'
-                               'килограммах(указать через точку): '))
+while True:
+    user_gravity = (input('Запишите ваш вес в '
+                          'килограммах(указать через точку): '))
+    try:
+        gravity = float(user_gravity)
+        break
+    except ValueError:
+        print("Пожалуйста пишите цифры.")
+
 
 user_height = float(input('Какой у вас рост в метрах?(указать через точку): '))
 
-bmi = user_gravity / (user_height**2)         # рассчет индекса массы тела
-bmi = round(bmi, 1)                            # округление индекса до десятых
-
-# вычесление колличества милилитров для указанного веса чела
-water_ml = user_gravity * WATER_PER_KG
-water_l = water_ml / WATER_LITR               # перевод мили в литры
-# округление бухалово воды до 2 знаков после запятой
-water_l = round(water_l, 1)
+# рассчет индекса массы тела + округление индекса до десятых
+bmi = round(gravity / (user_height**2), ndigits=1)
+# вычесление коллич ества милилитров для указанного веса чела
+water_ml = gravity * WATER_PER_KG
+water_l = (water_ml / WATER_LITR)         # перевод мили в литры
 
 print()
 print(f"Отчет для пользователя: {user_name} ({user_age} г.) ")
-print("=" * 38)
+print("=" * LINE_ELEMENT)
 print(f"Твой Индекс Массы Тела: {bmi}")
-print('Рекомендуемая норма воды,для подержания вашего'
+print('Рекомендуемая норма воды,для подержания вашего '
       f"состояния: {water_l:.1f} л. в день")
-print("=" * 38)
+print("=" * LINE_ELEMENT)
 print("Расчет окончен. Будьте здоровы!;)")
