@@ -31,7 +31,7 @@ while True:
 user_height = float(input('Какой у вас рост в метрах?(указать через точку): '))
 
 # рассчет индекса массы тела + округление индекса до десятых
-bmi = round(gravity / (user_height**2), 3)
+bmi = gravity / (user_height**2)
 # вычесление колличество милилитров для указанного веса чела
 water_ml = gravity * WATER_PER_KG
 water_l = round(water_ml / WATER_LITR, 2)       # перевод мили в литры
@@ -39,7 +39,7 @@ water_l = round(water_ml / WATER_LITR, 2)       # перевод мили в л�
 print()
 print(f"Отчет для пользователя: {user_name} ({user_age} г.) ")
 print("=" * LINE_ELEMENT)
-print(f"Твой Индекс Массы Тела: {bmi}")
+print(f"Твой Индекс Массы Тела: {bmi:.1f}")
 print('Рекомендуемая норма воды,для подержания вашего '
       f"состояния: {water_l} л. в день")
 print("=" * LINE_ELEMENT)
