@@ -6,7 +6,7 @@ LINE_ELEMENT = 38   # колличество элементов на печат�
 
 print("Добро пожаловать в 'FitLife MVP\'")
 print("*" * LINE_ELEMENT)
-# ввод данных- Имени
+
 user_name = input("Пожалуста напишите ваше имя: ")
 user_name = user_name.title()
 
@@ -30,7 +30,7 @@ while True:
 
 user_height = float(input('Какой у вас рост в метрах?(указать через точку): '))
 
-# рассчет индекса массы тела + округление индекса до десятых
+# рассчет индекса массы тела 
 bmi = gravity / (user_height**2)
 # вычесление колличество милилитров для указанного веса чела
 water_ml = gravity * WATER_PER_KG
